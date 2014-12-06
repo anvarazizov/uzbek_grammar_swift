@@ -1,13 +1,19 @@
+//
+//  String+UzbekGrammarExtension.swift
+//  
+//
+//  Created by Anvar Azizov on 14/12/06.
+//
+//
 
 import Foundation
-
 
 extension String {
 	
 	func plural() -> String {
 		return self + "lar"
 	}
-
+	
 	// MARK: Noun cases
 	
 	func locativeCase() -> String {
@@ -37,7 +43,7 @@ extension String {
 		
 		if last(self) == "k" {
 			return self + "ka"
-
+			
 		}
 		if last(self) == "q" {
 			return self + "qa"
@@ -218,42 +224,3 @@ extension String {
 		return self.pastBase().plural()
 	}
 }
-
-var verbWithConsonant = "aytmoq"
-var verbWithVowel = "yashamoq"
-
-verbWithConsonant.imperative()
-verbWithConsonant.imperativePlural()
-verbWithConsonant.imperativeThirdPerson()
-
-verbWithConsonant.futurePresentMe()
-verbWithConsonant.futurePresentYou()
-verbWithConsonant.futurePresentThirdPerson()
-verbWithConsonant.futurePresentWe()
-verbWithConsonant.futurePresentYouPlural()
-verbWithConsonant.futurePresentThey()
-
-verbWithConsonant.pastMe()
-verbWithConsonant.pastYou()
-verbWithConsonant.pastThirdPerson()
-verbWithConsonant.pastWe()
-verbWithConsonant.pastYouPlural()
-verbWithConsonant.pastThey()
-
-verbWithVowel.imperative()
-verbWithVowel.imperativePlural()
-verbWithVowel.imperativeThirdPerson()
-
-verbWithVowel.futurePresentMe()
-verbWithVowel.futurePresentYou()
-verbWithVowel.futurePresentThirdPerson()
-verbWithVowel.futurePresentWe()
-verbWithVowel.futurePresentYouPlural()
-verbWithVowel.futurePresentThey()
-
-verbWithVowel.pastMe()
-verbWithVowel.pastYou()
-verbWithVowel.pastThirdPerson()
-verbWithVowel.pastWe()
-verbWithVowel.pastYouPlural()
-verbWithVowel.pastThey()
