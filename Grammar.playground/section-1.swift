@@ -8,6 +8,10 @@ extension String {
 		return self + "lar"
 	}
 
+	func question() -> String {
+		return self + "mi"
+	}
+	
 	// MARK: Noun cases
 	
 	func locativeCase() -> String {
@@ -119,7 +123,41 @@ extension String {
 	}
 	
 	// MARK: VERBS
+	
+	// MARK: Personal pointers
+	
+	func me() -> String {
+		return self + "man"
+	}
+	
+	func you() -> String {
+		return self + "san"
+	}
+	
+	func youPlural() -> String {
+		return self + "siz"
+	}
+	
+	func we() -> String {
+		return self + "miz"
+	}
+	
+	func thirdPerson() -> String {
+		
+		switch last(self) as Character! {
+		case "p":
+			return self + "ti"
+		default:
+			return self + "di"
+		}
+	}
+	
+	func they() -> String {
+		return self.thirdPerson().plural()
+	}
+	
 	// MARK: Imperative
+	
 	func imperative() -> String {
 		let shortVerb = self.stringByReplacingOccurrencesOfString("moq", withString: "", options: nil, range: nil)
 		return shortVerb
@@ -145,31 +183,31 @@ extension String {
 	func futurePresentMe() -> String {
 		
 		let verb = self.futurePresentBase()
-		return verb + "man"
+		return verb.me()
 	}
 	
 	func futurePresentYou() -> String {
 		
 		let verb = self.futurePresentBase()
-		return verb + "san"
+		return verb.you()
 	}
 	
 	func futurePresentYouPlural() -> String {
 		
 		let verb = self.futurePresentBase()
-		return verb + "siz"
+		return verb.youPlural()
 	}
 	
 	func futurePresentWe() -> String {
 		
 		let verb = self.futurePresentBase()
-		return verb + "miz"
+		return verb.we()
 	}
 	
 	func futurePresentThirdPerson() -> String {
 		
 		let verb = self.futurePresentBase()
-		return verb + "di"
+		return verb.thirdPerson()
 	}
 	
 	func futurePresentThey() -> String {
@@ -188,10 +226,40 @@ extension String {
 		}
 	}
 	
+	// MARK: Present tense
+	
+	func presentBase() -> String {
+		return self.imperative() + "yap"
+	}
+	
+	func presentMe() -> String {
+		return self.presentBase().me()
+	}
+	
+	func presentYou() -> String {
+		return self.presentBase().you()
+	}
+
+	func presentThirdPerson() -> String {
+		return self.presentBase().thirdPerson()
+	}
+	
+	func presentYouPlural() -> String {
+		return self.presentBase().youPlural()
+	}
+	
+	func presentWe() -> String {
+		return self.presentBase().we()
+	}
+	
+	func presentThey() -> String {
+		return self.presentBase().they()
+	}
+	
 	// MARK: Past tense
 	
 	func pastBase() -> String {
-		return self.imperative() + "di"
+		return self.imperative().thirdPerson()
 	}
 	
 	func pastMe() -> String {
@@ -218,42 +286,3 @@ extension String {
 		return self.pastBase().plural()
 	}
 }
-
-var verbWithConsonant = "aytmoq"
-var verbWithVowel = "yashamoq"
-
-verbWithConsonant.imperative()
-verbWithConsonant.imperativePlural()
-verbWithConsonant.imperativeThirdPerson()
-
-verbWithConsonant.futurePresentMe()
-verbWithConsonant.futurePresentYou()
-verbWithConsonant.futurePresentThirdPerson()
-verbWithConsonant.futurePresentWe()
-verbWithConsonant.futurePresentYouPlural()
-verbWithConsonant.futurePresentThey()
-
-verbWithConsonant.pastMe()
-verbWithConsonant.pastYou()
-verbWithConsonant.pastThirdPerson()
-verbWithConsonant.pastWe()
-verbWithConsonant.pastYouPlural()
-verbWithConsonant.pastThey()
-
-verbWithVowel.imperative()
-verbWithVowel.imperativePlural()
-verbWithVowel.imperativeThirdPerson()
-
-verbWithVowel.futurePresentMe()
-verbWithVowel.futurePresentYou()
-verbWithVowel.futurePresentThirdPerson()
-verbWithVowel.futurePresentWe()
-verbWithVowel.futurePresentYouPlural()
-verbWithVowel.futurePresentThey()
-
-verbWithVowel.pastMe()
-verbWithVowel.pastYou()
-verbWithVowel.pastThirdPerson()
-verbWithVowel.pastWe()
-verbWithVowel.pastYouPlural()
-verbWithVowel.pastThey()
