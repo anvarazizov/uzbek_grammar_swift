@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
 	
 	func plural() -> String {
 		return self + "lar"
@@ -30,11 +30,9 @@ extension String {
 	
 	func accusativeCase() -> String {
 		
-		if last(self) == "n"
-		{
+		if self.last == "n" {
 			return self + "i"
-		} else
-		{
+		} else {
 			return self + "ni"
 		}
 	}
@@ -45,15 +43,13 @@ extension String {
 	
 	func dativeCase() -> String {
 		
-		if last(self) == "k" {
+		if self.last == "k" {
 			return self + "ka"
 			
 		}
-		if last(self) == "q" {
+		if self.last == "q" {
 			return self + "qa"
-		}
-		else
-		{
+		} else {
 			return self + "ga"
 		}
 	}
@@ -62,13 +58,13 @@ extension String {
 	
 	func my() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "a", "e", "i", "o", "u":
 			return self + "m"
 		case "k":
-			return dropLast(self) + "gim"
+			return self.dropLast() + "gim"
 		case "q":
-			return dropLast(self) + "g'im"
+			return self.dropLast() + "g'im"
 		default:
 			return self + "im"
 		}
@@ -76,13 +72,13 @@ extension String {
 	
 	func your() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "a", "e", "i", "o", "u":
 			return self + "ng"
 		case "k":
-			return dropLast(self) + "ging"
+			return self.dropLast() + "ging"
 		case "q":
-			return dropLast(self) + "g'ing"
+			return self.dropLast() + "g'ing"
 		default:
 			return self + "ing"
 		}
@@ -94,11 +90,11 @@ extension String {
 	
 	func his() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "a", "e", "i", "o", "u":
 			return self + "si"
 		case "k", "q":
-			return dropLast(self) + "i"
+			return self.dropLast() + "i"
 		default:
 			return self + "i"
 		}
@@ -106,9 +102,9 @@ extension String {
 	
 	func their() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "k", "q":
-			return dropLast(self) + "lari"
+			return self.dropLast() + "lari"
 		default:
 			return self + "lari"
 		}
@@ -116,13 +112,13 @@ extension String {
 	
 	func our() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "a", "e", "i", "o", "u":
 			return self + "miz"
 		case "k":
-			return dropLast(self) + "gimiz"
+			return self.dropLast() + "gimiz"
 		case "q":
-			return dropLast(self) + "g'imiz"
+			return self.dropLast() + "g'imiz"
 		default:
 			return self + "imiz"
 		}
@@ -150,7 +146,7 @@ extension String {
 	
 	func thirdPerson() -> String {
 		
-		switch last(self) as Character! {
+		switch self.last {
 		case "p":
 			return self + "ti"
 		default:
@@ -165,14 +161,14 @@ extension String {
 	// MARK: Imperative
 	
 	func imperative() -> String {
-		let shortVerb = self.stringByReplacingOccurrencesOfString("moq", withString: "", options: nil, range: nil)
+		let shortVerb = self.replacingOccurrences(of: "moq", with: "")
 		return shortVerb
 	}
 	
 	func imperativePlural() -> String {
 		let verb = self.imperative()
 		
-		switch last(verb) as Character! {
+		switch verb.last {
 		case "a", "e", "i", "o", "u":
 			return verb + "ng"
 		default:
@@ -224,7 +220,7 @@ extension String {
 		
 		let shortVerb = self.imperative()
 		
-		switch last(shortVerb) as Character! {
+		switch shortVerb.last {
 		case "a", "e", "i", "o", "u":
 			return shortVerb + "y"
 		default:
